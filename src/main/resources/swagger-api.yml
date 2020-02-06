@@ -1,0 +1,39 @@
+swagger: "2.0"
+info:
+  description: Book API
+  title: Book API
+  version: 0.0.0-alpha
+schemes:
+  - http
+servers:
+  - url: 'http://localhost:8080'
+  - url: 'http://localhost:8082'
+paths:
+  '/books/books':
+    get:
+      summary: get all books.
+      description: Get All Books.
+      parameters:
+        - name: book_id
+          in: query
+          schema:
+            type: integer
+          required: false
+          description: Id of the book
+      tags:
+        - Books
+      responses:
+        200:
+          description:
+          schema:
+            $ref: "./bean-definition.yml#/definitions/resultDto"
+        400:
+          description: Bad request
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        404:
+          description: Not found
+        500:
+          description: Internal Server Error
